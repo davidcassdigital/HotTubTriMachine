@@ -14,9 +14,23 @@
 
 <body>
     <div id="app" style="height: 100%">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
+        <svg class="loading-progress" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Loading hot tub">
+            <!-- tub base -->
+            <ellipse cx="60" cy="78" rx="38" ry="14" fill="#8b5e3c" />
+            <!-- tub rim -->
+            <ellipse cx="60" cy="68" rx="34" ry="10" fill="#a97146" />
+            <!-- water -->
+            <ellipse cx="60" cy="68" rx="28" ry="8" fill="#4fc3f7" />
+
+            <!-- steam -->
+            <g fill="none" stroke="#9ea7b3" stroke-width="3" stroke-linecap="round">
+                <!-- left wisp -->
+                <path class="steam steam-1" d="M48 52 C46 46, 50 40, 48 34" />
+                <!-- center wisp -->
+                <path class="steam steam-2" d="M60 50 C58 44, 62 38, 60 32" />
+                <!-- right wisp -->
+                <path class="steam steam-3" d="M72 52 C70 46, 74 40, 72 34" />
+            </g>
         </svg>
         <div class="loading-progress-text"></div>
     </div>

@@ -77,37 +77,110 @@ a, .btn-link {
     }
 
 .loading-progress {
-    position: relative;
+    width: 80px;
+    height: 80px;
     display: block;
-    width: 8rem;
-    height: 8rem;
-    margin: 20vh auto 1rem auto;
 }
 
-    .loading-progress circle {
-        fill: none;
-        stroke: #e0e0e0;
-        stroke-width: 0.6rem;
-        transform-origin: 50% 50%;
-        transform: rotate(-90deg);
+/* steam rise + fade */
+@keyframes steamRise {
+    0% {
+        transform: translateY(4px);
+        opacity: 0;
     }
 
-        .loading-progress circle:last-child {
-            stroke: #1b6ec2;
-            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
-            transition: stroke-dasharray 0.05s ease-in-out;
-        }
+    20% {
+        opacity: 0.7;
+    }
 
-.loading-progress-text {
+    100% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+}
+
+.steam-1 {
+    animation: steamRise 1.6s infinite ease-out;
+}
+
+.steam-2 {
+    animation: steamRise 1.8s infinite ease-out;
+    animation-delay: 0.3s;
+}
+
+.steam-3 {
+    animation: steamRise 2s infinite ease-out;
+    animation-delay: 0.6s;
+}
+
+/* optional: tub pulsing very subtly to feel "live" */
+@keyframes tubPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.loading-container {
+  position: relative;
+}
+
+.loading-progress
+{
+    transform-origin: 50% 60%;
+    width: 240px;
+    height: 240px;
+    display: block;
+    margin: 0 auto; /* horizontally center */
     position: absolute;
-    text-align: center;
-    font-weight: bold;
-    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-    .loading-progress-text:after {
-        content: var(--blazor-load-percentage-text, "Loading");
+/* rising steam */
+.steam {
+    opacity: 0;
+    transform-origin: center;
+}
+
+/* same animation, different timings */
+@keyframes steamRise {
+    0% {
+        transform: translateY(6px);
+        opacity: 0;
     }
+
+    20% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(-16px);
+        opacity: 0;
+    }
+}
+
+.steam-1 {
+    animation: steamRise 1.6s infinite ease-out;
+}
+
+.steam-2 {
+    animation: steamRise 1.8s infinite ease-out;
+    animation-delay: 0.3s;
+}
+
+.steam-3 {
+    animation: steamRise 2s infinite ease-out;
+    animation-delay: 0.6s;
+}
 
 code {
     color: #c02d76;
