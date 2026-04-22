@@ -1,7 +1,18 @@
-html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+:root {
+    --main-color: #D93E6A;
+    --secondary-color: #F06A8A;
+    --tertiary-color: #F8A5C2;
+    --alternate-color: #6F4BA8;
 }
 
+html, body {
+    font-family: "Futura", "Trebuchet MS", Helvetica, Arial, sans-serif;
+    height: 100%;
+}
+
+main {
+    background-color: var(--tertiary-color);
+}
 h1:focus {
     outline: none;
 }
