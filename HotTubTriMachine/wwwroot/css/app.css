@@ -3,6 +3,10 @@
     --secondary-color: #F06A8A;
     --tertiary-color: #F8A5C2;
     --alternate-color: #6F4BA8;
+    --rz-primary: var(--main-color);
+    --rz-primary-light: var(--secondary-color);
+    --rz-header-background-color: var(--main-color);
+    --rz-footer-background-color: var(--tertiary-color);
 }
 
 html, body {
@@ -11,8 +15,12 @@ html, body {
 }
 
 main {
+}
+
+.sub-main {
     background-color: var(--tertiary-color);
 }
+
 h1:focus {
     outline: none;
 }

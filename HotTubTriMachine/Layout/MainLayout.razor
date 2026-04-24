@@ -1,19 +1,26 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
 
-    <main class="main">
-        <div>
-            
-            <article class="content px-4">
-                @Body
-            </article>
+<HeadContent>
+    <RadzenTheme Theme="material" />
+</HeadContent>
 
+<RadzenLayout>
+    <RadzenHeader>
+        <RadzenStack 
+            Orientation="Orientation.Horizontal" 
+            JustifyContent="JustifyContent.Center"
+            AlignItems="AlignItems.Center" 
+            Gap="10"
+            style="height: 100%"
+        >
+            <RadzenLabel Text="HOT TUB TRI MACHINE" style="font-size: xx-large"/>
+        </RadzenStack>
+    </RadzenHeader>
+
+    <RadzenBody>
+        <div class="rz-p-4">
+            @Body
         </div>
-@*         <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
- *@    </main>
-</div>
+    </RadzenBody>
+</RadzenLayout>
+
