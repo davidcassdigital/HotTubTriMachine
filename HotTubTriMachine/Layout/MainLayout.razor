@@ -6,21 +6,24 @@
 
 <RadzenLayout>
     <RadzenHeader>
-        <RadzenStack 
-            Orientation="Orientation.Horizontal" 
-            JustifyContent="JustifyContent.Center"
-            AlignItems="AlignItems.Center" 
-            Gap="10"
-            style="height: 100%"
-        >
-            <RadzenLabel Text="HOT TUB TRI MACHINE" style="font-size: xx-large"/>
-        </RadzenStack>
+        <Header />
     </RadzenHeader>
+        
+    <RadzenBody style="background-color: var(--tertiary-color)">
+        <div style="padding:5px; height:100%; display: flex; flex-direction: column">
+            <div style="flex:1; background-color: var(--tertiary-color);">
+                @Body
+            </div>
 
-    <RadzenBody>
-        <div class="rz-p-4">
-            @Body
+            <footer>
+                <Footer />
+            </footer>
+
         </div>
+        
+
     </RadzenBody>
+
+
 </RadzenLayout>
 
