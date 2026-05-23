@@ -1,0 +1,65 @@
+/* Background CSS based on minimalist pink design */
+
+body {
+  background: linear-gradient(135deg, #f5c8d8 0%, #f5d4e0 50%, #fce0e6 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.background-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5c8d8 0%, #f5d4e0 50%, #fce0e6 100%);
+  overflow: hidden;
+}
+
+/* Minimalist geometric shapes to match the design */
+.background-shape-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 120px;
+  background: rgba(240, 180, 200, 0.3);
+  border-radius: 8px;
+}
+
+.background-shape-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 80px;
+  background: rgba(235, 160, 185, 0.2);
+  border-radius: 4px;
+}
+
+/* Alternative: Solid pink background */
+.background-solid {
+  background-color: #f5c8d8;
+}
+
+/* Alternative: Subtle texture effect */
+.background-textured {
+  background: linear-gradient(135deg, #f5c8d8 0%, #f5d4e0 50%, #fce0e6 100%);
+  background-attachment: fixed;
+  position: relative;
+}
+
+.background-textured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
