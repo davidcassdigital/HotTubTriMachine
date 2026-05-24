@@ -14,12 +14,37 @@ html, body {
     height: 100%;
 }
 
-main {
+.rz-body.background {
+    --shift: 20px; /* horizontal shift for every other row */
+    --tile-h: 120px; /* fallback tile height (replace or set via JS) */
+    position: relative;
+    background-color: var(--tertiary-color);
+    z-index: 0;
 }
 
-.sub-main {
-    background-color: var(--tertiary-color);
-}
+    /* two layers: base (no shift) and overlay (shifted) */
+    .rz-body.background::before,
+    .rz-body.background::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url('/images/background.jpg');
+        background-repeat: repeat;
+        background-size: auto;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .rz-body.background::before {
+        background-position: 0 0;
+    }
+
+    /* shifted copy, revealed only on every other row using a repeating mask */
+    .rz-body.background::after {
+        background-position: var(--shift) 0;
+        -webkit-mask-image: repeating-linear-gradient( to bottom, #000 0 var(--tile-h), transparent var(--tile-h) calc(var(--tile-h) * 2) );
+        mask-image: repeating-linear-gradient( to bottom, #000 0 var(--tile-h), transparent var(--tile-h) calc(var(--tile-h) * 2) );
+    }
 
 h1:focus {
     outline: none;

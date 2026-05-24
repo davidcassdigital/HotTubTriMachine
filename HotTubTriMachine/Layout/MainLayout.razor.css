@@ -5,10 +5,16 @@
     height:100%;
 }
 
-main {
-    flex: 1;
+.main {
+    padding: 5px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+.sub-main {
+    flex: 1;
+}
 .sidebar {
     background-image: linear-gradient(180deg, var(--main-color) 0%, var(--secondary-color) 70%);
 }
