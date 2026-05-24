@@ -16,13 +16,4 @@
     <Folder Include="wwwroot\sample-data\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="wwwroot\images\CoverImage.jpeg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="wwwroot\images\CoverImageListen.jpeg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>
