@@ -1,0 +1,36 @@
+﻿@page "/links"
+
+<PageTitle>Hot Tub Tri Machine | Links</PageTitle>
+
+<h3>Links</h3>
+
+<p>Useful links:</p>
+
+<ul class="list-unstyled">
+@foreach (var item in LinksList)
+{
+    <li class="mb-2">
+        <a href="@item.Url" target="_blank" rel="noopener noreferrer">@item.Title</a>
+        @if (!string.IsNullOrWhiteSpace(item.Description))
+        {
+            <div class="text-muted small">@item.Description</div>
+        }
+    </li>
+}
+</ul>
+
+@code {
+    private record LinkItem(string Title, string Url, string? Description = null);
+
+    private readonly List<LinkItem> LinksList = new()
+    {
+        new("Triathlon Pink", "https://www.theeventcrew.com.au/event/triathlon-pink/", "Event information and registration"),
+        new("Hell of the West", "https://hellofthewest.com/", "Cycling event in Tasmania"),
+        new("Ironman Australia — Port Macquarie", "https://www.ironman.com/races/im-australia", "Official Ironman race page"),
+        new("Otago Central Rail Trail", "https://www.otagocentralrailtrail.co.nz/", "Trail information and visitor resources"),
+        new("Organised tours — Trail Journeys", "https://www.trailjourneys.co.nz/nz-cycle-trails/otago-central-rail-trail", "Guided and organised tours"),
+        new("Mount Wellington Descent Bike Ride", "https://www.roaradventures.com/tours/easy-mt-wellington-mountain-bike-ride", "Guided Mt Wellington bike rides"),
+        new("Three Capes Walk", "https://greatwalksofaustralia.com.au/our-walks/three-capes-signature-walk/", "Three Capes Signature Walk details"),
+        new("Hobart Marathon Festival", "https://hobartmarathon.com.au/", "Marathon event information")
+    };
+}
