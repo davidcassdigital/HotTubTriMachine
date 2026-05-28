@@ -6,6 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hot Tub Tri Machine</title>
     <base href="/" />
+    <link rel="canonical" href="https://www.hottubtrimachine.au/" />
+    <script>
+        (function () {
+            const canonicalHost = "www.hottubtrimachine.au";
+            const apexHost = "hottubtrimachine.au";
+            const { protocol, host, pathname, search, hash } = window.location;
+
+            // Keep a single canonical host for SEO and avoid duplicate indexing.
+            if (protocol === "https:" && host === apexHost) {
+                window.location.replace(`https://${canonicalHost}${pathname}${search}${hash}`);
+                return;
+            }
+
+            if (protocol === "https:" && host === canonicalHost) {
+                const canonicalHref = `https://${canonicalHost}${pathname}${search}`;
+                let canonicalLink = document.querySelector("link[rel='canonical']");
+                if (!canonicalLink) {
+                    canonicalLink = document.createElement("link");
+                    canonicalLink.setAttribute("rel", "canonical");
+                    document.head.appendChild(canonicalLink);
+                }
+                canonicalLink.setAttribute("href", canonicalHref);
+            }
+        })();
+    </script>
 
     <link rel="icon" type="image/png" href="images/HotTubOnly.png" />
     <link href="HotTubTriMachine.styles.css" rel="stylesheet" />
