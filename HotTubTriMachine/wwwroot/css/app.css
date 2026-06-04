@@ -105,6 +105,17 @@ a, .btn-link {
     z-index: 1000;
 }
 
+    #blazor-error-ui::before {
+        content: "An unhandled error has occurred.";
+    }
+
+#static-seo-content {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
     #blazor-error-ui .dismiss {
         cursor: pointer;
         position: absolute;
