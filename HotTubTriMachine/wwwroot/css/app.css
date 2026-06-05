@@ -105,8 +105,8 @@ a, .btn-link {
     z-index: 1000;
 }
 
-    #blazor-error-ui::before {
-        content: "An unhandled error has occurred.";
+    #blazor-error-ui {
+        display: none;
     }
 
 #static-seo-content {
