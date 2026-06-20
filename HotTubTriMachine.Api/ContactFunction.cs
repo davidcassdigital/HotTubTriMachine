@@ -61,7 +61,7 @@ namespace HotTubTriMachine.Api
                 // Send email via SendGrid if configured
                 var sendGridKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
                 var sendGridTo = Environment.GetEnvironmentVariable("CONTACT_TO") ?? "contact@hottubtrimachine.au";
-                var sendGridFrom = Environment.GetEnvironmentVariable("CONTACT_FROM") ?? "web@hottubtrimachine.au";
+                var sendGridFrom = Environment.GetEnvironmentVariable("CONTACT_FROM") ?? "emails@davidcassdigital.au";
 
                 if (string.IsNullOrEmpty(sendGridKey))
                 {
@@ -82,6 +82,16 @@ namespace HotTubTriMachine.Api
                         msg.AddTo(new EmailAddress(sendGridTo));
                         var resp = await client.SendEmailAsync(msg);
                         logger.LogInformation("SendGrid response status: {statusCode}", resp.StatusCode);
+                    
+                        if (!resp.IsSuccessStatusCode)
+                        {
+                            var body = await resp.Body.ReadAsStringAsync();
+                            logger.LogError("SendGrid send failed with status {statusCode}: {responseBody}", resp.StatusCode, body);
+                            var err = req.CreateResponse(HttpStatusCode.InternalServerError);
+                            AddCorsHeaders(err);
+                            await err.WriteStringAsync("Failed to send message.");
+                            return err;
+                        }
                     }
                     catch (Exception ex)
                     {
