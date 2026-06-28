@@ -23,20 +23,6 @@
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
-.page-intro p {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: #555;
-    margin: 0.75rem auto;
-    max-width: 700px;
-    background: transparent;
-}
-
-.page-intro p b {
-    color: var(--main-color, #333);
-    font-weight: 600;
-}
-
 /* Character Cards Section */
 .characters-section {
     background: transparent;
