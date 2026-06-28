@@ -1,0 +1,73 @@
+@page "/podcast"
+
+<PageTitle>Hot Tub Tri Machine | Podcast</PageTitle>
+
+<div class="page-container">
+    <section class="page-intro">
+        <h3>Podcast</h3>
+        <p>
+            Listen to our latest episodes covering triathlon training, fitness tips, race strategies,
+            and inspiring conversations with athletes from around the world. Available on your favorite
+            podcast platforms.
+        </p>
+    </section>
+    
+    <section class="podcast-platforms">
+        <h2>Listen Now</h2>
+        <div class="podcast-grid">
+            <!-- Spotify Card -->
+            <div class="podcast-card">
+                <div class="platform-header spotify">
+                    <h3>Spotify</h3>
+                </div>
+                <div class="platform-content">
+                    <p class="platform-description">Stream all episodes on Spotify</p>
+                    <a href="https://open.spotify.com/show/4sxkVtqubtn2kiyxA6StJZ" target="_blank" rel="noopener noreferrer" class="listen-btn spotify-btn">
+                        Listen on Spotify
+                    </a>
+                </div>
+            </div>
+
+            <!-- Apple Podcasts Card -->
+            <div class="podcast-card">
+                <div class="platform-header apple">
+                    <h3>Apple Podcasts</h3>
+                </div>
+                <div class="platform-content">
+                    <p class="platform-description">Subscribe on Apple Podcasts</p>
+                    <a href="https://podcasts.apple.com/us/podcast/hot-tub-tri-machine/id1894465100" target="_blank" rel="noopener noreferrer" class="listen-btn apple-btn">
+                        Listen on Apple Podcasts
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="podcast-embeds">
+        <h2>Latest Episode</h2>
+        <div class="embeds-wrapper">
+            <div class="embed-container spotify-embed">
+                <iframe data-testid="embed-iframe" 
+                        style="border-radius:12px" 
+                        src="https://open.spotify.com/embed/show/4sxkVtqubtn2kiyxA6StJZ?utm_source=generator" 
+                        width="100%" 
+                        height="352" 
+                        frameBorder="0" 
+                        allowfullscreen="" 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                        loading="lazy">
+                </iframe>
+            </div>
+
+            <div class="embed-container apple-embed">
+                <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
+                        frameborder="0" 
+                        height="450" 
+                        style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" 
+                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                        src="https://embed.podcasts.apple.com/us/podcast/hot-tub-tri-machine/id1894465100">
+                </iframe>
+            </div>
+        </div>
+    </section>
+</div>

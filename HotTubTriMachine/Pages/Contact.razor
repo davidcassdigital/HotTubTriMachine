@@ -6,50 +6,53 @@
 
 <PageTitle>Hot Tub Tri Machine | Contact</PageTitle>
 
-<h3>Contact</h3>
+<div class="page-container">
+    <section class="page-intro">
+        <h3>Contact Us</h3>
+        <p>Send your “Age Group Ask” questions or your “Shout Outs” to <a href="mailto:hottubtrimachine@gmail.com">hottubtrimachine@gmail.com</a>.</p>
+    </section>
+    @if (!string.IsNullOrEmpty(StatusMessage))
+    {
+        <div class="mt-3 alert @StatusClass">@StatusMessage</div>
+    }
+    <section>
+        <EditForm Model="ContactModel" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
 
-<p>Send your “Age Group Ask” questions or your “Shout Outs” to <a href="mailto:hottubtrimachine@gmail.com">hottubtrimachine@gmail.com</a>.</p>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <InputText id="name" class="form-control" @bind-Value="ContactModel.Name" />
+                <ValidationMessage For="@(() => ContactModel.Name)" />
+            </div>
 
-<EditForm Model="ContactModel" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+            <div class="mb-3">
+                <label for="email" class="form-label">Your Email</label>
+                <InputText id="email" class="form-control" @bind-Value="ContactModel.Email" />
+                <ValidationMessage For="@(() => ContactModel.Email)" />
+            </div>
 
-    <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <InputText id="name" class="form-control" @bind-Value="ContactModel.Name" />
-        <ValidationMessage For="@(() => ContactModel.Name)" />
-    </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <InputSelect id="category" class="form-select" @bind-Value="ContactModel.Category">
+                    <option value="">Select...</option>
+                    <option>Age Group Ask</option>
+                    <option>Shout Out</option>
+                    <option>Other</option>
+                </InputSelect>
+                <ValidationMessage For="@(() => ContactModel.Category)" />
+            </div>
 
-    <div class="mb-3">
-        <label for="email" class="form-label">Your Email</label>
-        <InputText id="email" class="form-control" @bind-Value="ContactModel.Email" />
-        <ValidationMessage For="@(() => ContactModel.Email)" />
-    </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <InputTextArea id="message" class="form-control" rows="6" @bind-Value="ContactModel.Message" />
+                <ValidationMessage For="@(() => ContactModel.Message)" />
+            </div>
 
-    <div class="mb-3">
-        <label for="category" class="form-label">Category</label>
-        <InputSelect id="category" class="form-select" @bind-Value="ContactModel.Category">
-            <option value="">Select...</option>
-            <option>Age Group Ask</option>
-            <option>Shout Out</option>
-            <option>Other</option>
-        </InputSelect>
-        <ValidationMessage For="@(() => ContactModel.Category)" />
-    </div>
-
-    <div class="mb-3">
-        <label for="message" class="form-label">Message</label>
-        <InputTextArea id="message" class="form-control" rows="6" @bind-Value="ContactModel.Message" />
-        <ValidationMessage For="@(() => ContactModel.Message)" />
-    </div>
-
-    <button type="submit" class="btn btn-primary" disabled="@IsSubmitting">Send</button>
-</EditForm>
-
-@if (!string.IsNullOrEmpty(StatusMessage))
-{
-    <div class="mt-3 alert @StatusClass">@StatusMessage</div>
-}
+            <button type="submit" class="btn btn-primary" disabled="@IsSubmitting">Send</button>
+        </EditForm>
+    </section>
+</div>
 
 @code {
     private ContactFormModel ContactModel { get; set; } = new();
