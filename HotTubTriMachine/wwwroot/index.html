@@ -9,6 +9,40 @@
     <meta property="og:site_name" content="Hot Tub Tri Machine" />
     <meta name="application-name" content="Hot Tub Tri Machine" />
     <base href="/" />
+
+    <!-- Fast inline JS flag: mark browser as JS-enabled and in "loading" state.
+         This lets us hide the static SEO stub for JS users until Blazor is ready,
+         while leaving the static content visible for crawlers / no-JS clients. -->
+    <script>
+        document.documentElement.classList.add('js-loading');
+    </script>
+
+    <!-- Minimal critical styles for the loading state (applies only when .js-loading is set) -->
+    <style>
+        /* Hide the static SEO block for JS-enabled browsers while app loads */
+        .js-loading #static-seo-content { display: none !important; }
+
+        /* Ensure spinner is visible and centered during loading */
+        .js-loading .loading-progress { display: block !important; opacity: 1; }
+
+        /* Avoid painting the heavy background tile images while loading */
+        .js-loading .background::before,
+        .js-loading .background::after { visibility: hidden; }
+
+        /* Loading helper text positioning */
+        .js-loading .loading-progress-text {
+            display: block;
+            position: absolute;
+            top: calc(50% + 140px);
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(0,0,0,0.75);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            font-size: 1rem;
+            text-align: center;
+        }
+    </style>
+
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -76,7 +110,7 @@
                 <path class="steam steam-3" d="M72 52 C70 46, 74 40, 72 34" />
             </g>
         </svg>
-        <div class="loading-progress-text"></div>
+        <div class="loading-progress-text">Warming up the hot tub…</div>
     </div>
 
     <div id="blazor-error-ui" aria-hidden="true">
@@ -84,6 +118,25 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+
+    <!-- Ensure we remove the js-loading flag when Blazor is ready.
+         Using Blazor.start() gives us a clear promise and avoids flicker. -->
+    <script>
+        (function () {
+            if (window.Blazor && typeof window.Blazor.start === 'function') {
+                window.Blazor.start()
+                    .then(() => document.documentElement.classList.remove('js-loading'))
+                    .catch(() => {
+                        // Fallback: remove after a short delay to avoid permanent loading UI
+                        setTimeout(() => document.documentElement.classList.remove('js-loading'), 1500);
+                    });
+            } else {
+                // If Blazor API not available (unexpected), remove loading state after short timeout
+                setTimeout(() => document.documentElement.classList.remove('js-loading'), 1500);
+            }
+        })();
+    </script>
+
     <script src="_content/Radzen.Blazor/Radzen.Blazor.js?v=@(typeof(Radzen.Colors).Assembly.GetName().Version)"></script>
 </body>
 
