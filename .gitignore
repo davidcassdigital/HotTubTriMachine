@@ -363,3 +363,30 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Azure Functions local settings
+local.settings.json
+
+# App settings
+appsettings.*.json
+
+# Rider / VSCode
+.idea/
+.vscode/
+
+# Certificates / keys
+*.pfx
+*.key
