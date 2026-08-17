@@ -1,0 +1,27 @@
+@using Markdig
+
+<div class="markdown-content">
+    @if (!string.IsNullOrEmpty(HtmlContent))
+    {
+        @((MarkupString)HtmlContent)
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string? MarkdownText { get; set; }
+
+    public string? HtmlContent { get; private set; }
+
+    protected override void OnInitialized()
+    {
+        if (!string.IsNullOrEmpty(MarkdownText))
+        {
+            var pipeline = new MarkdownPipelineBuilder()
+                .UseAdvancedExtensions()
+                .Build();
+
+            HtmlContent = Markdown.ToHtml(MarkdownText, pipeline);
+        }
+    }
+}

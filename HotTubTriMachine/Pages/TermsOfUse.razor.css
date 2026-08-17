@@ -1,0 +1,13 @@
+.loading {
+    text-align: center;
+    color: #999;
+    padding: 2rem;
+    font-style: italic;
+}
+
+.error {
+    text-align: center;
+    color: #d9534f;
+    padding: 2rem;
+    font-style: italic;
+}

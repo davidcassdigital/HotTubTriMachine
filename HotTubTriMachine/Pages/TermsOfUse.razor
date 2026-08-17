@@ -1,0 +1,31 @@
+@page "/terms"
+@using HotTubTriMachine.Services
+@inject MarkdownService MarkdownService
+
+<PageTitle>Terms of Use | Hot Tub Tri Machine</PageTitle>
+
+<div class="page-container">
+    @if (MarkdownContent != null)
+    {
+        <MarkdownRenderer MarkdownText="@MarkdownContent" />
+    }
+    else if (IsLoading)
+    {
+        <p class="loading">Loading terms of use...</p>
+    }
+    else
+    {
+        <p class="error">Unable to load terms of use.</p>
+    }
+</div>
+
+@code {
+    private string? MarkdownContent;
+    private bool IsLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        MarkdownContent = await MarkdownService.GetMarkdownAsync("legal/Terms of Use.md");
+        IsLoading = false;
+    }
+}

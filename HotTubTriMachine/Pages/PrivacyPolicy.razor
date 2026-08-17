@@ -1,0 +1,31 @@
+@page "/privacy"
+@using HotTubTriMachine.Services
+@inject MarkdownService MarkdownService
+
+<PageTitle>Privacy Policy | Hot Tub Tri Machine</PageTitle>
+
+<div class="page-container">
+    @if (MarkdownContent != null)
+    {
+        <MarkdownRenderer MarkdownText="@MarkdownContent" />
+    }
+    else if (IsLoading)
+    {
+        <p class="loading">Loading privacy policy...</p>
+    }
+    else
+    {
+        <p class="error">Unable to load privacy policy.</p>
+    }
+</div>
+
+@code {
+    private string? MarkdownContent;
+    private bool IsLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        MarkdownContent = await MarkdownService.GetMarkdownAsync("legal/Privacy Policy.md");
+        IsLoading = false;
+    }
+}
